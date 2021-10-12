@@ -1,0 +1,27 @@
+{
+  "name": "how-to-use-github-action-",
+  "version": "1.0.0",
+  "description": "how to use github action",
+  "source": "./index.html",
+  "scripts": {
+    "dev": "parcel",
+    "build": "parcel build "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taotao7/how-to-use-github-action-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taotao7/how-to-use-github-action-/issues"
+  },
+  "homepage": "https://github.com/taotao7/how-to-use-github-action-#readme",
+  "devDependencies": {
+    "parcel": "^2.0.0-rc.0"
+  },
+  "dependencies": {
+    "reveal.js": "^4.1.3"
+  }
+}
