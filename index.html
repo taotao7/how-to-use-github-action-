@@ -1,19 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Git Action</title>
-    <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/moon.css">
-</head>
-<body>
-<div class='reveal'>
-    <div class='slides'>
+    <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/reveal.js/dist/theme/blood.css"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
         <section>
-            <h1>⛷ Git Action</h1>
+          <h1>⛷ Git Action</h1>
         </section>
         <section>
-            <pre><code data-line-numbers="3-5">
+          <section>
+            <h2>CI/CD</h2>
+            <p>持续集成CI(Continuous Integration)</p>
+            <p>持续交付CD(Continuous Delivery)</p>
+            <p>持续部署CD(Continuous Deployment)</p>
+          </section>
+          <section>
+            <h2>CI 持续集成</h2>
+            <p>合并，测试，代码健康检查...</p>
+            <aside class="notes">
+              确保统一环境，完整性测试，防止破坏性更改,如果发现有问题可以用ci进行修复或者提醒维护者,aone的例子，代码健康等等
+            </aside>
+          </section>
+          <section>
+            <h2>CD 持续交付</h2>
+            <p>在CI通过测试，校验等后自动合并代码或者构建编译等操作</p>
+            <aside class="notes">更加高效的自动化工作流程，减少重复工作</aside>
+          </section>
+          <section>
+            <h2>CD 持续部署</h2>
+            <p>作为交付的延续工作，可以自动把通过校验的代码部署到服务器</p>
+            <aside class="notes">更加高效的自动化工作流程，减少重复工作</aside>
+          </section>
+        </section>
+        <section>
+          <pre><code data-line-numbers="3-5">
             <table>
               <tr>
                 <td>Apples</td>
@@ -34,17 +62,18 @@
             </code></pre>
         </section>
         <section data-markdown>
-            <textarea data-template>
+          <textarea data-template>
                 ## Slide 1
                 ---
                 a testing
                 ## Slide 2
                 Note:
                 This is note
-            </textarea>
+            </textarea
+          >
         </section>
+      </div>
     </div>
-</div>
-<script type="module" src="index.js"></script>
-</body>
+    <script type="module" src="index.js"></script>
+  </body>
 </html>

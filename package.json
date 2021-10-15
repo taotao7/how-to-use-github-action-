@@ -5,7 +5,8 @@
   "source": "./index.html",
   "scripts": {
     "dev": "parcel",
-    "build": "parcel build "
+    "build": "parcel build ",
+    "start": "concurrently \"node utils/clean.js && npm run build && npx http-server ./dist --cors -g -p 4444\" \"wait-on http://127.0.0.1:4444 && ngrok http 4444\" \"wait-on http://127.0.0.1:4040 && node utils/browser.js\"  "
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,16 @@
   },
   "homepage": "https://github.com/taotao7/how-to-use-github-action-#readme",
   "devDependencies": {
-    "parcel": "^2.0.0-rc.0"
+    "@parcel/compressor-brotli": "^2.0.0",
+    "@parcel/compressor-gzip": "^2.0.0",
+    "@parcel/optimizer-esbuild": "^2.0.0",
+    "@parcel/reporter-bundle-analyzer": "^2.0.0",
+    "concurrently": "^6.3.0",
+    "open": "^8.3.0",
+    "parcel": "^2.0.0",
+    "reveal-multiplex": "^0.1.0",
+    "rimraf": "^3.0.2",
+    "wait-on": "^6.0.0"
   },
   "dependencies": {
     "reveal.js": "^4.1.3"
