@@ -105,3 +105,4 @@ dist
 
 # parcel
 .parcel-cache/
+parcel-bundle-reports/
