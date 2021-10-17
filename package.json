@@ -4,7 +4,7 @@
   "description": "how to use github action",
   "source": "./index.html",
   "scripts": {
-    "dev": "parcel",
+    "dev": "parcel serve --open",
     "build": "parcel build ",
     "start": "concurrently \"node utils/clean.js && npm run build && npx http-server ./dist --cors -g -p 4444\" \"wait-on http://127.0.0.1:4444 && ngrok http 4444\" \"wait-on http://127.0.0.1:4040 && node utils/browser.js\"  "
   },
