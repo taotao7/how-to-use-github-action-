@@ -42,38 +42,87 @@
             <p>作为交付的延续工作，可以自动把通过校验的代码部署到服务器</p>
             <aside class="notes">更加高效的自动化工作流程，减少重复工作</aside>
           </section>
+          <section>
+            <h2>常见的CI/CD平台</h2>
+            <p>Jenkins</p>
+            <p>CricleCi</p>
+            <p>Travis</p>
+            <p>GitHub Actions</p>
+            <aside class="notes">
+              特点Jekins本地服务器构建, Travis 曾经主流 GitHub Actions 主流
+            </aside>
+          </section>
         </section>
         <section>
-          <pre><code data-line-numbers="3-5">
-            <table>
-              <tr>
-                <td>Apples</td>
-                <td>$1</td>
-                <td>7</td>
-              </tr>
-              <tr>
-                <td>Oranges</td>
-                <td>$2</td>
-                <td>18</td>
-              </tr>
-              <tr>
-                <td>Kiwi</td>
-                <td>$3</td>
-                <td>1</td>
-              </tr>
-            </table>
-            </code></pre>
-        </section>
-        <section data-markdown>
-          <textarea data-template>
-                ## Slide 1
-                ---
-                a testing
-                ## Slide 2
-                Note:
-                This is note
-            </textarea
-          >
+          <section>
+            <h2>GitHub Action</h2>
+            <ul>
+            <li>
+              🤖:GitHub Actions <a href="https://github.com/marketplace?type=actions">
+Marketplace Actions
+              </a> 
+            </li>
+            <li>
+              🤖: <a href="https://docs.github.com/cn/actions">Document</a>
+            </li>
+            </ul>
+            <p>
+            </p>
+            <aside class="notes">
+              git action 和其他ci/cd服务的区别，市场，本身的优势，其他常用的一些脚本都能找到对应
+            </aside>
+          </section>
+          <section>
+            <h2>基本概念</h2>
+            <ul>
+              <li>workflow(工作流程):持续集成一次运行的过程,就是一个workflow。</li>
+              <li>job(任务):一个workflow由一个或多个jobs构成,含义是一次持续集成的运行,可以完成多个任务。</li>
+              <li>step(步骤):每个job由多个step构成,一步步完成。</li>
+              <li>action(动作):每个step可以依次执行一个或多个命令(action)。</li>
+            </ul>
+          </section>
+          <section>
+            样例
+            <pre>
+              <code>
+name: CodeCov
+on:
+  push:
+    branches: [master]
+  workflow_run:
+    workflows: ['Receive PR']
+    types:
+      - completed
+
+jobs:
+  CodeCov:
+    environment: ali_oss_AK
+    runs-on: ubuntu-latest
+    env:
+      ONCI: true
+      ALI_SDK_OSS_ID: ${{secrets.ALI_SDK_OSS_ID}}
+      ALI_SDK_OSS_SECRET: ${{secrets.ALI_SDK_OSS_SECRET}}
+      ALI_SDK_OSS_REGION: ${{secrets.ALI_SDK_OSS_REGION}}
+      ALI_SDK_STS_BUCKET: ${{secrets.ALI_SDK_STS_BUCKET}}
+      ALI_SDK_STS_ID: ${{secrets.ALI_SDK_STS_ID}}
+      ALI_SDK_STS_REGION: ${{secrets.ALI_SDK_STS_REGION}}
+      ALI_SDK_STS_ROLE: ${{secrets.ALI_SDK_STS_ROLE}}
+      ALI_SDK_STS_SECRET: ${{secrets.ALI_SDK_STS_SECRET}}
+    steps:
+      - uses: actions/checkout@v2
+      - name: test and report upload
+        run: |
+          npm install
+          npm run tsc
+          npx nyc --reporter=lcov node_modules/.bin/_mocha -t 60000 -r should test/node/*.test.js test/node/**/*.test.js
+          npx codecov -t ${{secrets.CODECOV_KEY}}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h2>Environment</h2>
+            <img src="./assets/environments.jpg" alt="">
+          </section>
         </section>
       </div>
     </div>
